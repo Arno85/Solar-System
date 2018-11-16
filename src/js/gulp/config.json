@@ -1,0 +1,18 @@
+{
+    "env": {
+        "localUrl": "http://localdev/Animations/Solar-System"
+    },
+    "dirPath": {
+        "src": "./src/",
+        "dist": "./dist/"
+    },
+    "tasksPath": "js/gulp/tasks/",
+    "browserSync": {
+        "files": [
+        "config.dirPath.dist + '**/*.js'",
+        "config.dirPath.dist + '**/*.css'",
+        "./**/*.php",
+        "./**/*.html"
+        ]
+    }
+}

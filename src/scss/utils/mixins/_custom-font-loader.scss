@@ -1,0 +1,21 @@
+// font-face loader
+// $familyName: name of the font.
+// $src: url where the font is.
+// $style (optionnal): italic, ...
+// $weight (optionnal): bold, ...
+@mixin font-face($familyName, $src, $style: normal, $weight: normal) {
+	@font-face {
+		font-family: $familyName;
+		src: url('#{$src}.eot'); // IE9 compat
+		src: url('#{$src}.eot?#iefix') format('embedded-opentype'), // IE8 and below
+		url('#{$src}.woff') format('woff'), // standards
+		url('#{$src}.ttf') format('truetype'), // Safari, Android, iOS
+		url('#{$src}.svg##{$familyName}') format('svg'), // legacy iOS
+		url('#{$src}.otf##{$familyName}') format("opentype");
+		font-style: $style;
+		font-weight: $weight;
+	};
+};
+
+
+

@@ -1,0 +1,17 @@
+// CSS Gradient Generator Mixin
+// $type: linear or radial
+// $param (Optionnal): top, to right bottom, 45deg, circle, ellipse, ...
+// $colors: list of colors (name, hex, rgb, ...)
+@mixin gradient($type, $param: '', $colors...) {
+
+    // fallback/image non-cover color
+    background-color: nth($colors, 1);
+
+    background: -webkit-#{$type}-gradient($param, $colors);
+    background: -moz-#{$type}-gradient($param, $colors);
+    background: -o-#{$type}-gradient($param, $colors);
+    background: -ms-#{$type}-gradient($param, $colors);
+    background: #{$type}-gradient($param, $colors);
+}
+
+
