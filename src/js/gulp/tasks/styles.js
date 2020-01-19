@@ -6,6 +6,7 @@
 * Minify, rename and autoprefix css rules for old browsers
 * @author Arnaud Martin
 */
+var version = `${Math.floor(new Date().getTime() / 1000)}`;
 
 module.exports = ($, config) => {
     $.gulp.task('styles', () => {
@@ -20,13 +21,15 @@ module.exports = ($, config) => {
                     this.emit('end');
                 }
             }))
+            .pipe($.cleanDir(config.dirPath.dist + 'css/'))
+            .pipe($.cleanDir(config.dirPath.dist + 'css/maps/'))
             .pipe($.sourcemaps.init())
             .pipe($.sass.sync({
                 outputStyle: 'compressed',
                 errLogToConsole: true
             }))
             .pipe($.rename({
-                suffix: '.min'
+                suffix: `-${version}.min`
             }))
             .pipe($.autoprefixer({
                 browsers: ['last 50 versions']

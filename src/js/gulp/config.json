@@ -1,6 +1,6 @@
 {
     "env": {
-        "localUrl": "http://localdev/Animations/Solar-System"
+        "localUrl": "http://localdev/Solar-System"
     },
     "dirPath": {
         "src": "./src/",

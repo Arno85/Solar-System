@@ -6,6 +6,8 @@
 * @author Arnaud Martin
 */
 
+var version = `${Math.floor(new Date().getTime() / 1000)}`;
+
 module.exports = ($, config) => {
     $.gulp.task('scripts', () => {
         return $.gulp.src(config.dirPath.src + 'js/internals/**/*.js')
@@ -18,16 +20,18 @@ module.exports = ($, config) => {
                     this.emit('end');
                 }
             }))
+            .pipe($.cleanDir(config.dirPath.dist + 'js/internals/'))
+            .pipe($.cleanDir(config.dirPath.dist + 'js/internals/maps/'))
             .pipe($.sourcemaps.init())
             .pipe($.order([
                 "main.js",
                 "modules/*.js",
                 "events.js"
               ]))
-            .pipe($.concat("main.js"))
+            .pipe($.concat(`main.js`))
             .pipe($.uglify())
             .pipe($.rename({
-                suffix: '.min'
+                suffix: `-${version}.min`
             }))
             .pipe($.sourcemaps.write('./maps'))
             .pipe($.gulp.dest(config.dirPath.dist + 'js/internals'))
