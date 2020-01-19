@@ -9,7 +9,7 @@
 module.exports = ($, config) => {
     $.gulp.task('dist', () => {
         // Start tasks styles, scripts, images to generate files in dist folder
-        $.gulp.start('styles', 'scripts', 'images');
+        $.gulp.start('styles',  'scripts', 'versioning-styles', 'versioning-scripts', 'images');
 
         // Copy others files in each folders
         $.gulp.src(config.dirPath.src + 'data/**/*')
